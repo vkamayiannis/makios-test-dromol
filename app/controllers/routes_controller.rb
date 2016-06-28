@@ -29,11 +29,13 @@ class RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.save
-        format.html { redirect_to @route, notice: 'Route was successfully created.' }
+        format.html { redirect_to routes_path }
         format.json { render :show, status: :created, location: @route }
+        format.js
       else
-        format.html { render :new }
+        format.html { render routes_path }
         format.json { render json: @route.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
