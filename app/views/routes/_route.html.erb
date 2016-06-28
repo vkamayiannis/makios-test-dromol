@@ -1,5 +1,5 @@
 <tr>
-<td><%= route.customer %></td>
+<td><%= route.customer.name if route.customer.present? %></td>
 <td><%= route.route_desc %></td>
 <td><%= route.route_date %></td>
 <td><%= route.quantity %></td>
