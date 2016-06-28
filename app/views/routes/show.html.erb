@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @route.customer %>
+</p>
+
+<p>
+  <strong>Route desc:</strong>
+  <%= @route.route_desc %>
+</p>
+
+<p>
+  <strong>Route date:</strong>
+  <%= @route.route_date %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @route.quantity %>
+</p>
+
+<p>
+  <strong>Sales value:</strong>
+  <%= @route.sales_value %>
+</p>
+
+<p>
+  <strong>Purchases value:</strong>
+  <%= @route.purchases_value %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
