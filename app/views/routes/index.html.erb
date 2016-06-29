@@ -1,23 +1,25 @@
 <p id="notice"><%= notice %></p>
 <%= render 'form' %>
+<br/>
+<br/>
+<br/>
+<h1>ΔΡΟΜΟΛΟΓΙΑ</h1>
 
-<h1>Listing Routes</h1>
-
-<table id = "routes-table">
+<table class="table table-hover" id = "routes-table">
   <thead>
     <tr>
-      <th>Customer</th>
-      <th>Route desc</th>
-      <th>Route date</th>
-      <th>Quantity</th>
-      <th>Sales value</th>
-      <th>Purchases value</th>
+      <th>Εντολέας</th>
+      <th>Δρομολόγιο</th>
+      <th>Ημερομηνία</th>
+      <th>Ποσότητα</th>
+      <th>Πωλήσεις</th>
+      <th>Αγορές</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @routes %> 
+    <%= render @routes %>
   </tbody>
 </table>
 

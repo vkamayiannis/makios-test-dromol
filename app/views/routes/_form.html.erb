@@ -10,31 +10,42 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :customer_name %><br>
-    <%= f.text_field :customer_name %>
-  </div>
-  <div class="field">
-    <%= f.label :route_desc %><br>
-    <%= f.text_field :route_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :route_date %><br>
-    <%= f.date_select :route_date %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :sales_value %><br>
-    <%= f.text_field :sales_value %>
-  </div>
-  <div class="field">
-    <%= f.label :purchases_value %><br>
-    <%= f.text_field :purchases_value %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :customer_name, class: "form-control", placeholder: "Πελάτης" %>
+      </div>
+    </div>
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :route_desc, class: "form-control", placeholder: "Δρομολόγιο" %>
+      </div>
+    </div>
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :route_date, class: "form-control datepicker", placeholder: "Ημερομηνία" %>
+      </div>
+    </div>
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.number_field :quantity, class: "form-control", placeholder: "Ποσότητα" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :sales_value, class: "form-control", placeholder: "Πωλήσεις" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :purchases_value, class: "form-control", placeholder: "Αγορές" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="actions">
+        <%= f.submit 'Εισαγωγή', class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>
+<br/>
