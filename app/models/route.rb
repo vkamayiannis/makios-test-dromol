@@ -1,5 +1,6 @@
 class Route < ActiveRecord::Base
   belongs_to :customer
+  validates_presence_of :customer
 
   def customer_name
     customer.try(:name)
