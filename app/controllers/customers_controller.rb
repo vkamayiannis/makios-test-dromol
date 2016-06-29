@@ -5,16 +5,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     if params[:term]
-      @customers = Customer.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"])
+      @customers = Customer.order(:name).where('name LIKE ?', "%#{params[:term]}%")
     else
       @customers = Customer.all
     end
 
-    respond_to do |format|  
-      format.html # index.html.erb  
-  # Here is where you can specify how to handle the request for "/people.json"
-      format.json { render :json => @customers.to_json }
-    end
+   render json: @customers.map(&:name)
   end
 
   # GET /customers/1
