@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630103939) do
+ActiveRecord::Schema.define(version: 20160630141024) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "code"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160630103939) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "transportation_id"
+    t.time     "loading_time"
   end
 
   add_index "routes", ["customer_id"], name: "index_routes_on_customer_id"

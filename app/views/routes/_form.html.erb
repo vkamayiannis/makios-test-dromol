@@ -16,6 +16,11 @@
         <%= f.text_field :customer_name, class: "form-control", placeholder: "Πελάτης" %>
       </div>
     </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :loading_time, class: "form-control", placeholder: "Ώρα φόρτωσης" %>
+      </div>
+    </div>
     <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
       <div class="field">
         <%= f.text_field :route_desc, class: "form-control", placeholder: "Δρομολόγιο" %>
@@ -26,12 +31,12 @@
         <%= f.text_field :route_date, class: "form-control datepicker", placeholder: "Ημερομηνία" %>
       </div>
     </div>
-    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
       <div class="field">
         <%= f.text_field :transportation_shortcut, class: "form-control", placeholder: "Τράκτορας" %>
       </div>
     </div>
-    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
       <div class="field">
         <%= f.number_field :quantity, class: "form-control", placeholder: "Ποσότητα" %>
       </div>

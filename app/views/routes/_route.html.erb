@@ -1,11 +1,12 @@
 <tr>
 <td><%= route.customer.name if route.customer.present? %></td>
+<td><%= route.loading_time.strftime("%H:%M") if route.loading_time.present? %></td>
 <td><%= route.route_desc %></td>
-<td><%= route.route_date %></td>
-<td><%= route.transportation.shortcut if route.transportation.present? %><%= link_to "  ?", route.transportation, remote: true %></td>
-<td><%= route.quantity %></td>
-<td><%= route.sales_value %></td>
-<td><%= route.purchases_value %></td>
+<td><%= route.route_date.strftime('%d/%m/%Y') %></td>
+<td><%= route.transportation.shortcut if route.transportation.present? %><%= link_to " [?]", route.transportation, remote: true  if route.transportation.present? %></td>
+<td class="text-right"><%= route.quantity %></td>
+<td class="text-right"><%= route.sales_value %></td>
+<td class="text-right"><%= route.purchases_value %></td>
 <td><%= link_to 'Show', route %></td>
 <td><%= link_to 'Edit', edit_route_path(route) %></td>
 <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
