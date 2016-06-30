@@ -6,6 +6,10 @@ jQuery ->
     source: '/customers',
     delay: 500
   });
+  $("#route_transportation_shortcut").autocomplete({
+    source: '/transportations',
+    delay: 500
+  });
 $.fn.extend {
   integrateDatepicker: (selector)->
     selector = selector || '.datepicker'

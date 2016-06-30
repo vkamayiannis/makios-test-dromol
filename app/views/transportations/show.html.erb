@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codeid:</strong>
+  <%= @transportation.codeid %>
+</p>
+
+<p>
+  <strong>Shortcut:</strong>
+  <%= @transportation.shortcut %>
+</p>
+
+<p>
+  <strong>Descr:</strong>
+  <%= @transportation.descr %>
+</p>
+
+<%= link_to 'Edit', edit_transportation_path(@transportation) %> |
+<%= link_to 'Back', transportations_path %>
