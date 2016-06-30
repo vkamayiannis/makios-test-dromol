@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Codeid:</strong>
-  <%= @transportation.codeid %>
-</p>
-
-<p>
-  <strong>Shortcut:</strong>
+  <strong>Πινακίδα:</strong>
   <%= @transportation.shortcut %>
 </p>
 
-<p>
-  <strong>Descr:</strong>
-  <%= @transportation.descr %>
-</p>
+<table class = "table table-stripped">
+  <th>Ημερ/νία</th>
+  <th>Τοποθεσία</th>
+  <tr/>
+  <td>29/06/2016</td>
+  <td>Θεσσαλονίκη</td>
+  <tr/>
+  <td>28/06/2016</td>
+  <td>Καβάλα</td>
+  <tr/>
+  <td>27/06/2016</td>
+  <td>Θεσσαλονίκη</td>
 
-<%= link_to 'Edit', edit_transportation_path(@transportation) %> |
-<%= link_to 'Back', transportations_path %>
+</table>

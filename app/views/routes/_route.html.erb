@@ -2,7 +2,7 @@
 <td><%= route.customer.name if route.customer.present? %></td>
 <td><%= route.route_desc %></td>
 <td><%= route.route_date %></td>
-<td><%= route.transportation.shortcut if route.transportation.present? %></td>
+<td><%= route.transportation.shortcut if route.transportation.present? %><%= link_to "  ?", route.transportation, remote: true %></td>
 <td><%= route.quantity %></td>
 <td><%= route.sales_value %></td>
 <td><%= route.purchases_value %></td>
