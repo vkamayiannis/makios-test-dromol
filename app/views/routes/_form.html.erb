@@ -43,17 +43,19 @@
     </div>
     <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
       <div class="field">
-        <%= f.text_field :sales_value, class: "form-control", placeholder: "Πωλήσεις" %>
+        <%= f.text_field :sales_value, class: "form-control", placeholder: "Χρέωση" %>
       </div>
     </div>
     <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
       <div class="field">
-        <%= f.text_field :purchases_value, class: "form-control", placeholder: "Αγορές" %>
+        <%= f.text_field :purchases_value, class: "form-control", placeholder: "Πίστωση" %>
       </div>
     </div>
     <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
       <div class="actions">
-        <%= f.submit 'Εισαγωγή', class: "btn btn-primary" %>
+        <%=  button_tag(type: 'submit', class: "btn btn-primary") do %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 <tr>
+<td><%= check_box_tag 'ckb_' + route.id.to_s %></td>
 <td><%= route.customer.name if route.customer.present? %></td>
 <td><%= route.loading_time.strftime("%H:%M") if route.loading_time.present? %></td>
 <td><%= route.route_desc %></td>
@@ -7,7 +8,19 @@
 <td class="text-right"><%= route.quantity %></td>
 <td class="text-right"><%= route.sales_value %></td>
 <td class="text-right"><%= route.purchases_value %></td>
-<td><%= link_to 'Εμφάνιση', route %></td>
-<td><%= link_to 'Ενημέρωση', edit_route_path(route) %></td>
-<td><%= link_to 'Διαγραφή', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td>
+  <%= link_to route, class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-eye-open"></i>
+  <% end %>
+</td>
+<td>
+  <%= link_to edit_route_path(route), class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-pencil"></i>
+  <% end %>
+</td>
+<td>
+  <%= link_to route, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-trash"></i>
+  <% end %>
+</td>
 </tr>
