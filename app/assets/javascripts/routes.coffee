@@ -16,4 +16,4 @@ $.fn.extend {
     $(@).find(selector).datepicker({format: 'dd/mm/yyyy'})
 }
 $(document).ready () ->
-  $('body').integrateDatepicker()
+  $('body').integrateDatepicker();

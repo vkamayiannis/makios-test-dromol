@@ -1,11 +1,14 @@
 class RoutesController < ApplicationController
+  before_filter :set_params
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   # GET /routes
   # GET /routes.json
   def index
+    session[:order] ||= 'id'
+    session[:reverse] ||= @reverse[:asc]
     @route = Route.new
-    @routes = Route.all
+    @routes = Route.filters_from_form(params).all.paginate(:page => params[:page]).order(set_order_option)
   end
 
   # GET /routes/1
@@ -66,6 +69,10 @@ class RoutesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_params
+      @reverse = {asc: ' ASC', desc: ' DESC'}
+    end
+
     def set_route
       @route = Route.find(params[:id])
     end
@@ -74,4 +81,12 @@ class RoutesController < ApplicationController
     def route_params
       params.require(:route).permit(:customer_id, :route_desc, :route_date, :quantity, :sales_value, :purchases_value, :customer_name, :transportation_id, :transportation_shortcut, :loading_time)
     end
+
+    def set_order_option
+    if params[:order]
+      session[:reverse] = (params[:order] == session[:order] && session[:reverse] == @reverse[:asc] ? @reverse[:desc] : @reverse[:asc])
+      session[:order] = params[:order]
+    end
+    return session[:order] + session[:reverse]
+  end
 end

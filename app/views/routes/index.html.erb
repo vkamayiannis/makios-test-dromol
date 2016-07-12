@@ -1,18 +1,76 @@
-<p id="notice"><%= notice %></p>
-<%= render 'form' %>
-<br/>
-<br/>
-<br/>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Εισαγωγή δρομολογίου
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <div class="row-fluid">
+            <div class="span8 offset1">
+          		<div class = "projects-list">
+                <p id="notice"><%= notice %></p>
+                <%= render 'form' %>
+          		</div>
+          	</div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Αναζήτηση
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <%= form_tag routes_path, method: 'get', role: 'form' do %>
+          <div class="form-group">
+            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+              <%= text_field_tag :customer_id, params[:customer_id], {class: 'form-control', placeholder: 'Εντολέας'} %>
+            </div>
+            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+              <%= text_field_tag :route_date, params[:route_date], {class: 'form-control datepicker', placeholder: 'Ημερομηνία'} %>
+            </div>
+            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+              <%= text_field_tag :route_desc, params[:route_desc], {class: 'form-control', placeholder: 'Δρομολόγιο'} %>
+            </div>
+            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+              <%= text_field_tag :transportation_id, params[:transportation_id], {class: 'form-control', placeholder: 'Μεταφ. μέσο'} %>
+            </div>
+            <%= submit_tag 'Αναζήτηση', name: 'Search', class: 'btn btn-primary', style: 'margin: 26px 10px' %>
+            <%= link_to 'Καθαρισμός', '#', class: 'clear_filters btn btn-warning' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h1>ΔΡΟΜΟΛΟΓΙΑ</h1>
 
 <table class="table table-bordered" id = "routes-table">
   <thead>
     <tr>
-      <th>Εντολέας</th>
-      <th>Ώρα φόρτωσης</th>
+      <th>Εντολέας
+        <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_id') %>
+      </th>
+      <th>Ώρα φόρτωσης
+        <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
+      </th>
       <th>Δρομολόγιο</th>
-      <th>Ημερομηνία</th>
-      <th>Τράκτορας</th>
+      <th>Ημερομηνία
+        <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+      </th>
+      <th>Τράκτορας
+        <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
+      </th>
       <th>Ποσότητα</th>
       <th>Πωλήσεις</th>
       <th>Αγορές</th>
@@ -25,6 +83,7 @@
   </tbody>
 </table>
 
+<%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
 <br>
 <div class="modal fade" id="modal">
 </div>

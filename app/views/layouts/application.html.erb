@@ -6,9 +6,35 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
 
+      <li><%= link_to 'Δρομολόγια ΜΑΚΙΟΣ', routes_path, class: "navbar-brand" %></li>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Δρομολόγηση <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to 'Λίστα δρομολογίων παραγγελιοληψίας', routes_path %></li>
+            <li><%= link_to 'Λίστα δρομολογίων', routes_path %></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Αποσύνδεση</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<br/>
+<br/>
+<br/>
 <%= yield %>
-
+<%= javascript_include_tag  'application' %>
 </body>
 </html>
