@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :final_routes
   resources :transportations
   resources :routes
   resources :customers

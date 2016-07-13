@@ -17,3 +17,4 @@ $.fn.extend {
 }
 $(document).ready () ->
   $('body').integrateDatepicker();
+  $('[data-toggle="tooltip"]').tooltip();

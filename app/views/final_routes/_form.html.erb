@@ -1,0 +1,68 @@
+<%= form_for(@final_route) do |f| %>
+  <% if @final_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@final_route.errors.count, "error") %> prohibited this final_route from being saved:</h2>
+
+      <ul>
+      <% @final_route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-bordered">
+    <td class="warning">
+      <div class="field">
+        <%= f.label :ftrdate %><br>
+        <%= f.date_select :ftrdate, class: "form-control" %>
+      </div>
+    </td>
+    <td class="warning">
+      <div class="field">
+        <%= f.label :transportation_shortcut %><br>
+        <%= f.text_field :transportation_shortcut, class: "form-control" %>
+      </div>
+    </td>
+  <td class="warning">
+    <div class="field">
+      <%= f.label :syromenoid %><br>
+      <%= f.number_field :syromenoid, class: "form-control" %>
+    </div>
+  </td>
+  <td class="warning">
+    <div class="field">
+      <%= f.label :supid %><br>
+      <%= f.number_field :supid, class: "form-control" %>
+    </div>
+  </td>
+  <tr>
+  <td class="warning">
+    <div class="field">
+      <%= f.label :customer_name %><br>
+      <%= f.text_field :customer_name, class: "form-control" %>
+    </div>
+  </td>
+  <td class="warning">
+    <div class="field">
+      <%= f.label :routetype %><br>
+      <%= f.select(:routetype, options_for_select([['Α', 1], ['Β', 2], ['Γ', 3]]), class: "form-control") %>
+    </div>
+  </td class="warning">
+  <td colspan="2" class="warning"></td>
+  <tr>
+  <td class="warning">
+    <div class="field">
+      <%= f.label :iswebroute %><br>
+      <%= f.check_box :iswebroute, class: "form-control" %>
+    </div>
+  </td class="warning">
+  <td colspan="3" class="warning"></td>
+  <tr>
+  <td class="warning">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </tr>
+</table>
+<% end %>

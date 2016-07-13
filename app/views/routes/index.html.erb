@@ -56,35 +56,39 @@
 
 <h1>ΔΡΟΜΟΛΟΓΙΑ</h1>
 
-<table class="table table-bordered" id = "routes-table">
-  <thead>
-    <tr>
-      <th>Επιλογή</th>
-      <th>Εντολέας
-        <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_id') %>
-      </th>
-      <th>Ώρα φόρτωσης
-        <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
-      </th>
-      <th>Δρομολόγιο</th>
-      <th>Ημερομηνία
-        <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
-      </th>
-      <th>Τράκτορας
-        <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
-      </th>
-      <th>Ποσότητα</th>
-      <th>Χρέωση</th>
-      <th>Πίστωση</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= form_tag new_final_route_path, method: 'get', role: 'form' do %>
+  <table class="table table-bordered" id = "routes-table">
+    <thead>
+      <tr>
+        <th>Επιλογή</th>
+        <th>Εντολέας
+          <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
+        </th>
+        <th>Ώρα φόρτωσης
+          <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
+        </th>
+        <th>Δρομολόγιο</th>
+        <th>Ημερομηνία
+          <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+        </th>
+        <th>Τράκτορας
+          <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
+        </th>
+        <th>Ποσότητα</th>
+        <th>Χρέωση</th>
+        <th>Πίστωση</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @routes %>
-  </tbody>
-</table>
-<%= link_to 'Οριστικοποίηση επιλεγμένων', routes_path, class: "btn btn-success" %>
+    <tbody>
+      <%= render @routes %>
+    </tbody>
+  </table>
+  <%= button_tag(type: 'submit', name: 'FinalizeRoutes', class: "btn btn-primary", style: 'margin: 26px 10px', title: 'Οριστικοποίηση δρομολογίων', 'data-toggle' => 'tooltip') do %>
+    <span class="glyphicon glyphicon-wrench"></span>
+  <% end %>
+<% end %>
 
 <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
 <br>

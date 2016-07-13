@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Final Routes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ftrdate</th>
+      <th>Trsid</th>
+      <th>Syromenoid</th>
+      <th>Supid</th>
+      <th>Cusid</th>
+      <th>Routetype</th>
+      <th>Iswebroute</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @final_routes.each do |final_route| %>
+      <tr>
+        <td><%= final_route.ftrdate %></td>
+        <td><%= final_route.trsid %></td>
+        <td><%= final_route.syromenoid %></td>
+        <td><%= final_route.supid %></td>
+        <td><%= final_route.cusid %></td>
+        <td><%= final_route.routetype %></td>
+        <td><%= final_route.iswebroute %></td>
+        <td><%= link_to 'Show', final_route %></td>
+        <td><%= link_to 'Edit', edit_final_route_path(final_route) %></td>
+        <td><%= link_to 'Destroy', final_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Final route', new_final_route_path %>

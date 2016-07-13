@@ -1,6 +1,7 @@
 class Route < ActiveRecord::Base
   belongs_to :customer
   belongs_to :transportation
+  belongs_to :final_route
   validates_presence_of :customer
   scope :filters_from_calendar, lambda { |params| filter_by_date(params) }
   self.per_page = 20

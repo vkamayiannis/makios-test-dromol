@@ -11,12 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630141024) do
+ActiveRecord::Schema.define(version: 20160713094654) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
     t.string   "afm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "final_routes", force: :cascade do |t|
+    t.date     "ftrdate"
+    t.integer  "trsid"
+    t.integer  "syromenoid"
+    t.integer  "supid"
+    t.integer  "cusid"
+    t.integer  "routetype"
+    t.integer  "iswebroute"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

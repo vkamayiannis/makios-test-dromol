@@ -1,5 +1,5 @@
 <tr>
-<td><%= check_box_tag 'ckb_' + route.id.to_s %></td>
+<td><%= check_box_tag 'ckb_' + route.id.to_s, params['route_id_'+route.id.to_s] %></td>
 <td><%= route.customer.name if route.customer.present? %></td>
 <td><%= route.loading_time.strftime("%H:%M") if route.loading_time.present? %></td>
 <td><%= route.route_desc %></td>
