@@ -20,6 +20,7 @@
             <% end %>
           </table>
         <% end %>
+        <hr>
         <br/>
           <% if @final_route.errors.any? %>
             <div id="error_explanation">
@@ -33,65 +34,39 @@
             </div>
           <% end %>
 
-          <table class="table table-bordered">
-            <td class="warning">
-              <div class="field">
-                <%= f.label :ftrdate, 'Ημερομηνία' %><br>
-                <%= f.text_field :ftrdate, class: "form-control datepicker" %>
+            <div class = "form-group">
+              <div class = "row">
+                <div class="field col-xs-2">
+                  <%= f.label :ftrdate, 'Ημερομηνία' %><br>
+                  <%= f.text_field :ftrdate, class: "form-control datepicker" %>
+                </div>
+                <div class="field col-xs-2">
+                  <%= f.label :transportation_shortcut, 'Τράκτορας' %><br>
+                  <%= f.text_field :transportation_shortcut, class: "form-control" %>
+                </div>
+              <div class="field col-xs-2">
+                <%= f.label :syromenoid, 'Συρόμενο' %><br>
+                <%= f.number_field :syromenoid, class: "form-control" %>
               </div>
-            </td>
-            <td class="warning">
-              <div class="field">
-                <%= f.label :transportation_shortcut, 'Τράκτορας' %><br>
-                <%= f.text_field :transportation_shortcut, class: "form-control" %>
+              <div class="field col-xs-3">
+                <%= f.label :supid, 'Προμηθευτής' %><br>
+                <%= f.number_field :supid, class: "form-control" %>
               </div>
-            </td>
-          <td class="warning">
-            <div class="field">
-              <%= f.label :syromenoid, 'Συρόμενο' %><br>
-              <%= f.number_field :syromenoid, class: "form-control" %>
+              <div class="field col-xs-3">
+                <%= f.label :customer_name, 'Εντολέας' %><br>
+                <%= f.text_field :customer_name, class: "form-control" %>
+              </div>
             </div>
-          </td>
-          <td class="warning">
-            <div class="field">
-              <%= f.label :supid, 'Προμηθευτής' %><br>
-              <%= f.number_field :supid, class: "form-control" %>
-            </div>
-          </td>
-          <tr>
-          <td class="warning col-md-8">
-            <div class="field">
-              <%= f.label :customer_name, 'Εντολέας' %><br>
-              <%= f.text_field :customer_name, class: "form-control" %>
-            </div>
-          </td>
-          <td class="warning">
-            <div class="field">
-              <%= f.label :routetype, 'Τύπος' %><br>
-              <%= f.select(:routetype, options_for_select([['Α', 1], ['Β', 2], ['Γ', 3]]), class: "form-control") %>
-            </div>
-          </td class="warning">
-          <td colspan="2" class="warning"></td>
-          <tr>
-          <td class="warning">
-            <div class="field">
-              <%= f.label :iswebroute, 'Web δρομολόγιο' %><br>
-              <%= f.check_box :iswebroute, class: "form-control" %>
-            </div>
-          </td class="warning">
-          <td colspan="3" class="warning"></td>
-          <tr>
-          </tr>
-        </table>
+        </div>
         <div class="modal-footer">
-          <div class="actions" data-dismiss="modal">
-            <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-              <i class="icon-ok icon-white glyphicon glyphicon-ok"></i>
-            <% end %>
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
+            <div class="actions">
+              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+               <i class="icon-ok icon-white glyphicon glyphicon-ok"></i>
+              <% end %>
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
           </div>
         </div>
-    </div>
 <% end %>

@@ -2,6 +2,8 @@ class FinalRoute < ActiveRecord::Base
   has_many :routes
   belongs_to :transportation, primary_key: 'id', foreign_key: 'trsid'
   belongs_to :customer, primary_key: 'id', foreign_key: 'cusid'
+  
+  accepts_nested_attributes_for :routes
 
   def customer_name
     customer.try(:name)
