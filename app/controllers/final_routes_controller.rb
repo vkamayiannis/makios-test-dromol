@@ -22,9 +22,10 @@ class FinalRoutesController < ApplicationController
           val = key[4..key.length]
           Rails.logger.warn "Param #{key}: #{val}"
           @route = Route.find_by_id(val)
+          @final_route.routes << @route
           @final_route.customer_name = @route.customer_name
           @final_route.transportation_shortcut = @route.transportation_shortcut
-          @final_route.ftrdate = @route.route_date
+          @final_route.ftrdate = @route.route_date.strftime('%d/%m/%Y')
           num_of_params += 1
         end
       end
@@ -61,9 +62,11 @@ class FinalRoutesController < ApplicationController
       if @final_route.update(final_route_params)
         format.html { redirect_to @final_route, notice: 'Final route was successfully updated.' }
         format.json { render :show, status: :ok, location: @final_route }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @final_route.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -86,6 +89,6 @@ class FinalRoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def final_route_params
-      params.require(:final_route).permit(:ftrdate, :trsid, :syromenoid, :supid, :cusid, :routetype, :iswebroute)
+      params.require(:final_route).permit(:ftrdate, :trsid, :syromenoid, :supid, :cusid, :routetype, :iswebroute, :customer_name, :transportation_shortcut)
     end
 end
