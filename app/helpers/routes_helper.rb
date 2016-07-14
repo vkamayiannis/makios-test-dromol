@@ -4,7 +4,7 @@ module RoutesHelper
   end
 
   def assign_created_class(created)
-     if !created.nil? && created = 1
+     if !created.nil? && created == 1
        "bg-danger"
      else
        "bg-default"

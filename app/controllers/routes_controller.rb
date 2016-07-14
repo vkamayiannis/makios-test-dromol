@@ -29,11 +29,11 @@ class RoutesController < ApplicationController
   # POST /routes.json
   def create
     @route = Route.new(route_params)
-
+    Rails.logger.warn "------------- Route creation -------------"
     respond_to do |format|
       if @route.save
-        format.html { redirect_to routes_path }
-        format.json { render :show, status: :created, location: @route }
+        #format.html { redirect_to routes_path }
+        #format.json { render :show, status: :created, location: @route }
         format.js
       else
         format.html { render routes_path }
