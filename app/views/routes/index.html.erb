@@ -60,7 +60,9 @@
   <table class="table table-bordered" id = "routes-table">
     <thead>
       <tr>
+        <% if Rails.application.config.ismainapplication %>
         <th>Επιλογή</th>
+        <% end %>
         <th>Εντολέας
           <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
         </th>
@@ -85,8 +87,10 @@
       <%= render @routes %>
     </tbody>
   </table>
-  <%= button_tag(type: 'submit', name: 'FinalizeRoutes', class: "btn btn-primary", style: 'margin: 26px 10px', title: 'Οριστικοποίηση δρομολογίων', 'data-toggle' => 'tooltip') do %>
-    <span class="glyphicon glyphicon-wrench"></span>
+  <% if Rails.application.config.ismainapplication %>
+    <%= button_tag(type: 'submit', name: 'FinalizeRoutes', class: "btn btn-primary", style: 'margin: 26px 10px', title: 'Οριστικοποίηση δρομολογίων', 'data-toggle' => 'tooltip') do %>
+      <span class="glyphicon glyphicon-wrench"></span>
+    <% end %>
   <% end %>
 <% end %>
 

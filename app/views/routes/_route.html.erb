@@ -1,5 +1,7 @@
 <tr>
-<td class=<%=assign_created_class(route.created)%>><%= check_box_tag 'ckb_' + route.id.to_s, params['route_id_'+route.id.to_s], false, disabled: (!route.created.nil? && route.created == 1) %></td>
+<% if Rails.application.config.ismainapplication %>
+  <td class=<%=assign_created_class(route.created)%>><%= check_box_tag 'ckb_' + route.id.to_s, params['route_id_'+route.id.to_s], false, disabled: (!route.created.nil? && route.created == 1) %></td>
+<% end %>
 <td class=<%=assign_created_class(route.created)%>><%= route.customer.name if route.customer.present? %></td>
 <td class=<%=assign_created_class(route.created)%>><%= route.loading_time.strftime("%H:%M") if route.loading_time.present? %></td>
 <td class=<%=assign_created_class(route.created)%>><%= route.route_desc %></td>
