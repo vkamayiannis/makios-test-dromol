@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
   before_filter :set_params
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+  skip_before_filter  :verify_authenticity_token
 
   # GET /routes
   # GET /routes.json
@@ -32,8 +33,8 @@ class RoutesController < ApplicationController
     Rails.logger.warn "------------- Route creation -------------"
     respond_to do |format|
       if @route.save
-        #format.html { redirect_to routes_path }
-        #format.json { render :show, status: :created, location: @route }
+        format.html { redirect_to routes_path }
+        format.json { render :show, status: :created, location: @route }
         format.js
       else
         format.html { render routes_path }
