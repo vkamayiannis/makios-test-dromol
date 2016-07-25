@@ -6,10 +6,12 @@
 <td class=<%=assign_created_class(route.created)%>><%= route.loading_time.strftime("%H:%M") if route.loading_time.present? %></td>
 <td class=<%=assign_created_class(route.created)%>><%= route.route_desc %></td>
 <td class=<%=assign_created_class(route.created)%>><%= route.route_date.strftime('%d/%m/%Y') %></td>
-<td class=<%=assign_created_class(route.created)%>><%= route.transportation.shortcut if route.transportation.present? %><%= link_to " [?]", route.transportation, remote: true  if route.transportation.present? %></td>
-<td class="text-right <%=assign_created_class(route.created)%>"><%= route.quantity %></td>
-<td class="text-right <%=assign_created_class(route.created)%>"><%= route.sales_value %></td>
-<td class="text-right <%=assign_created_class(route.created)%>"><%= route.purchases_value %></td>
+<% if Rails.application.config.ismainapplication %>
+  <td class=<%=assign_created_class(route.created)%>><%= route.transportation.shortcut if route.transportation.present? %><%= link_to " [?]", route.transportation, remote: true  if route.transportation.present? %></td>
+  <td class="text-right <%=assign_created_class(route.created)%>"><%= route.quantity %></td>
+  <td class="text-right <%=assign_created_class(route.created)%>"><%= route.sales_value %></td>
+  <td class="text-right <%=assign_created_class(route.created)%>"><%= route.purchases_value %></td>
+<% end %>
 <td>
   <%= link_to route, class: "btn btn-default" do %>
     <i class="glyphicon glyphicon-eye-open"></i>

@@ -55,38 +55,101 @@
 </div>
 
 <h1>ΔΡΟΜΟΛΟΓΙΑ</h1>
+<% if !Rails.application.config.ismainapplication %>
+  <%= link_to 'Prev', routes_path(initial_date: session[:intial_date] - 2) %>
+  <%= link_to 'Next', routes_path(initial_date: session[:intial_date] + 2) %>
+<% end %>
 
 <%= form_tag new_final_route_path, method: 'get', role: 'form', remote: true do %>
-  <table class="table table-bordered" id = "routes-table">
-    <thead>
-      <tr>
-        <% if Rails.application.config.ismainapplication %>
-        <th>Επιλογή</th>
-        <% end %>
-        <th>Εντολέας
-          <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
-        </th>
-        <th>Ώρα φόρτωσης
-          <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
-        </th>
-        <th>Δρομολόγιο</th>
-        <th>Ημερομηνία
-          <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
-        </th>
-        <th>Τράκτορας
-          <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
-        </th>
-        <th>Ποσότητα</th>
-        <th>Χρέωση</th>
-        <th>Πίστωση</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <% if Rails.application.config.ismainapplication %>
+    <table class="table table-bordered" id = "routes-table">
+      <thead>
+        <tr>
+          <% if Rails.application.config.ismainapplication %>
+          <th>Επιλογή</th>
+          <% end %>
+          <th>Εντολέας
+            <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
+          </th>
+          <th>Ώρα φόρτωσης
+            <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
+          </th>
+          <th>Δρομολόγιο</th>
+          <th>Ημερομηνία
+            <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+          </th>
+          <th>Τράκτορας
+            <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
+          </th>
+          <th>Ποσότητα</th>
+          <th>Χρέωση</th>
+          <th>Πίστωση</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= render @routes %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= render @routes %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="container">
+      <div class="floatLeft">
+        <tr>
+          <table style="display: inline-block;" width="30%" border="1">
+            <thead>
+              <tr>
+                <% if Rails.application.config.ismainapplication %>
+                <th>Επιλογή</th>
+                <% end %>
+                <th>Εντολέας
+                  <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
+                </th>
+                <th>Ώρα φόρτωσης
+                  <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
+                </th>
+                <th>Δρομολόγιο</th>
+                <th>Ημερομηνία
+                  <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+                </th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @prvroutes %>
+            </tbody>
+          </table>
+        </tr>
+      </div>
+      <div class="floatRight">
+        <tr>
+          <table style="display: inline-block;" width="30%" border="1">
+            <thead>
+              <tr>
+                <% if Rails.application.config.ismainapplication %>
+                <th>Επιλογή</th>
+                <% end %>
+                <th>Εντολέας
+                  <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
+                </th>
+                <th>Ώρα φόρτωσης
+                  <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
+                </th>
+                <th>Δρομολόγιο</th>
+                <th>Ημερομηνία
+                  <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+                </th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @routes %>
+            </tbody>
+          </table>
+        </tr>
+      </div>
+    </div>
+  <% end %>
   <% if Rails.application.config.ismainapplication %>
     <%= button_tag(type: 'submit', name: 'FinalizeRoutes', class: "btn btn-primary", style: 'margin: 26px 10px', title: 'Οριστικοποίηση δρομολογίων', 'data-toggle' => 'tooltip') do %>
       <span class="fa fa-truck"></span>

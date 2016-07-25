@@ -9,7 +9,23 @@ class RoutesController < ApplicationController
     session[:order] ||= 'id'
     session[:reverse] ||= @reverse[:asc]
     @route = Route.new
-    @routes = Route.filters_from_form(params).all.paginate(:page => params[:page]).order(set_order_option)
+    if Rails.application.config.ismainapplication
+      @routes = Route.filters_from_form(params).all.paginate(:page => params[:page]).order(set_order_option)
+    else
+      if !params[:initial_date].present?
+        session[:intial_date] = Date.today
+        @routes = Route.where('route_date = ?', Date.today).paginate(:page => params[:page]).order(set_order_option)
+        @prvroutes = Route.where('route_date = ?', Date.today - 1).paginate(:page => params[:page]).order(set_order_option)
+        @nextroutes = Route.where('route_date = ?', Date.today + 1).paginate(:page => params[:page]).order(set_order_option)
+      else
+        @pdate = Date.parse params[:initial_date]
+        session[:intial_date] = @pdate
+        Rails.logger.warn @pDate
+        @routes = Route.where('route_date = ?', @pdate).paginate(:page => params[:page]).order(set_order_option)
+        @prvroutes = Route.where('route_date = ?', @pdate - 1).paginate(:page => params[:page]).order(set_order_option)
+        @nextroutes = Route.where('route_date = ?', @pdate + 1).paginate(:page => params[:page]).order(set_order_option)
+      end
+    end
   end
 
   # GET /routes/1
