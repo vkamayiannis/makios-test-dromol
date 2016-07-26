@@ -1,0 +1,75 @@
+<%= form_for(@route) do |f| %>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Δημιουργία παραγγελίας</h3>
+      </div>
+      <div class = "modal-body">
+            <% if @route.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+                <ul>
+                <% @route.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class = "form-group">
+              <div class = "row">
+                <div class="field col-xs-6">
+                  <%= f.text_field :customer_name, class: "form-control autocomplete_txt", placeholder: "Πελάτης" %>
+                </div>
+                <div class="field col-xs-3">
+                  <%= f.text_field :route_date, class: "form-control datepicker", placeholder: "Ημερομηνία" %>
+                </div>
+                <div class="field col-xs-2">
+                  <%= f.text_field :loading_time, class: "form-control", placeholder: "Ώρα φόρτωσης" %>
+                </div>
+                <div class="field col-xs-7">
+                  <%= f.text_field :transportation_shortcut, class: "form-control", placeholder: "Τράκτορας" %>
+                </div>
+                <div class="field col-xs-4">
+                  <%= f.number_field :quantity, class: "form-control", placeholder: "Ποσότητα" %>
+                </div>
+                <div class="field col-xs-4">
+                  <%= f.text_field :sales_value, class: "form-control", placeholder: "Χρέωση" %>
+                </div>
+                <div class="field col-xs-4">
+                  <%= f.text_field :purchases_value, class: "form-control", placeholder: "Πίστωση" %>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <div id = "senders">
+              <h4>Αποστολείς:</h4>
+            </div>
+            <hr/>
+            <div id = "receivers">
+              <h4>Παραλήπτες:</h4>
+              <div class='nested-fields'>
+                <%= f.fields_for :route_receivers do |rec| %>
+                  <%= render 'route_receiver_fields', f: rec %>
+                <% end %>
+              </div>
+              <div class = "links">
+                <%= link_to_add_association "Προσθήκη παραλήπτη", f, :route_receivers, class: "btn btn-primary", id: "add_rec_link"  %>
+              </div>
+            </div>
+          </div>
+            <div class="modal-footer">
+              <div class="actions">
+                <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                 <i class="icon-ok icon-white glyphicon glyphicon-ok"></i>
+                <% end %>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+<% end %>

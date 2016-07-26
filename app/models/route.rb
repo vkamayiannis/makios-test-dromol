@@ -2,11 +2,14 @@ class Route < ActiveRecord::Base
   belongs_to :customer
   belongs_to :transportation
   belongs_to :final_route
+  has_many :route_receivers
   validates_presence_of :customer
   scope :filters_from_calendar, lambda { |params| filter_by_date(params) }
   self.per_page = 20
+  accepts_nested_attributes_for :route_receivers, allow_destroy: true, reject_if: :all_blank
 
   scope :filters_from_form, lambda { |params| make_syntax(params) }
+  before_create :create_dromol_description
 
   def customer_name
     customer.try(:name)
@@ -63,5 +66,12 @@ class Route < ActiveRecord::Base
       return "route_date = ?", params[:route_date]
     end
   end
-
+  def create_dromol_description
+    dromol_desc = ''
+    self.route_receivers.each do |rec|
+      dromol_desc = dromol_desc + rec.customer_name + ' - '
+    end
+    self.route_desc = dromol_desc[0..-3]
+    return true
+  end
 end

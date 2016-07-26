@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :final_routes
   resources :transportations
-  resources :routes
+  resources :routes do
+    resources :route_receivers
+  end
   resources :customers
   root 'routes#index'
   # The priority is based upon order of creation: first created -> highest priority.
