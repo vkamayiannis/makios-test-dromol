@@ -1,60 +1,34 @@
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Εισαγωγή δρομολογίου
-        </a>
-      </h4>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1 class="text-center">Παραγγελίες</h1>
+    <div class="text-center">
+      <%= link_to new_route_path, class: "btn btn-primary", data: { keybinding: 'h' }, remote: true do %>
+        <span class="glyphicon glyphicon-plus-sign"></span>Νέα εγγραφή
+      <% end %>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <div class="row-fluid">
-            <div class="span8 offset1">
-          		<div class = "projects-list">
-                <p id="notice"><%= notice %></p>
-                  <%= render 'form' %>
-          		</div>
-          	</div>
-          </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Αναζήτηση
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        <%= form_tag routes_path, method: 'get', role: 'form' do %>
-          <div class="form-group">
-            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
-              <%= text_field_tag :customer_id, params[:customer_id], {class: 'form-control', placeholder: 'Εντολέας'} %>
-            </div>
-            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
-              <%= text_field_tag :route_date, params[:route_date], {class: 'form-control datepicker', placeholder: 'Ημερομηνία'} %>
-            </div>
-            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
-              <%= text_field_tag :route_desc, params[:route_desc], {class: 'form-control', placeholder: 'Δρομολόγιο'} %>
-            </div>
-            <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
-              <%= text_field_tag :transportation_id, params[:transportation_id], {class: 'form-control', placeholder: 'Μεταφ. μέσο'} %>
-            </div>
-            <%= button_tag(type: 'submit', name: 'Search', class: "btn btn-primary", style: 'margin: 26px 10px') do %>
-              <span class="glyphicon glyphicon-search"></span>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <br/>
   </div>
 </div>
+<%= form_tag routes_path, method: 'get', role: 'form' do %>
+  <div class="form-group">
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <%= text_field_tag :customer_id, params[:customer_id], {class: 'form-control', placeholder: 'Εντολέας'} %>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <%= text_field_tag :route_date, params[:route_date], {class: 'form-control datepicker', placeholder: 'Ημερομηνία'} %>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <%= text_field_tag :route_desc, params[:route_desc], {class: 'form-control', placeholder: 'Δρομολόγιο'} %>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <%= text_field_tag :transportation_id, params[:transportation_id], {class: 'form-control', placeholder: 'Μεταφ. μέσο'} %>
+    </div>
+    <%= button_tag(type: 'submit', name: 'Search', class: "btn btn-primary", style: 'margin: 26px 10px') do %>
+      <span class="glyphicon glyphicon-search"></span>
+    <% end %>
+  </div>
+<% end %>
 
-<h1>ΔΡΟΜΟΛΟΓΙΑ</h1>
 <% if !Rails.application.config.ismainapplication %>
   <%= link_to 'Prev', routes_path(initial_date: session[:intial_date] - 2) %>
   <%= link_to 'Next', routes_path(initial_date: session[:intial_date] + 2) %>

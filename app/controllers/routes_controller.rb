@@ -36,6 +36,7 @@ class RoutesController < ApplicationController
   # GET /routes/new
   def new
     @route = Route.new
+    @route.route_receivers.build
   end
 
   # GET /routes/1/edit
@@ -96,7 +97,7 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:customer_id, :route_desc, :route_date, :quantity, :sales_value, :purchases_value, :customer_name, :transportation_id, :transportation_shortcut, :loading_time, :created)
+      params.require(:route).permit(:customer_id, :route_desc, :route_date, :quantity, :sales_value, :purchases_value, :customer_name, :transportation_id, :transportation_shortcut, :loading_time, :created, { route_receivers_attributes: [:id, :customer_name, :_destroy] })
     end
 
     def set_order_option

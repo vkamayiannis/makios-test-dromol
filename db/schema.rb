@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719083446) do
+ActiveRecord::Schema.define(version: 20160726080101) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "code"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20160719083446) do
 
   add_index "models", ["email"], name: "index_models_on_email", unique: true
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+
+  create_table "route_receivers", force: :cascade do |t|
+    t.integer  "route_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "route_receivers", ["customer_id"], name: "index_route_receivers_on_customer_id"
+  add_index "route_receivers", ["route_id"], name: "index_route_receivers_on_route_id"
 
 # Could not dump table "routes" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
