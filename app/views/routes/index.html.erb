@@ -44,13 +44,17 @@
           <% end %>
           <th>Εντολέας
             <%= link_to '', routes_path(order: 'customer_id'), class: assign_order_arrow('customer_name') %>
+            <%= text_field_tag :customer_id, params[:customer_id], {class: 'form-control', placeholder: 'Εντολέας'} %>
           </th>
           <th>Ώρα φόρτωσης
             <%= link_to '', routes_path(order: 'loading_time'), class: assign_order_arrow('loading_time') %>
           </th>
-          <th>Δρομολόγιο</th>
+          <th>Δρομολόγιο
+            <%= text_field_tag :route_desc, params[:route_desc], {class: 'form-control'} %>
+          </th>
           <th>Ημερομηνία
             <%= link_to '', routes_path(order: 'route_date'), class: assign_order_arrow('route_date') %>
+            <%= text_field_tag :route_date, params[:route_date], {class: 'form-control datepicker', placeholder: 'Ημερομηνία'} %>
           </th>
           <th>Τράκτορας
             <%= link_to '', routes_path(order: 'transportation_id'), class: assign_order_arrow('transportation_id') %>
