@@ -4,6 +4,7 @@ class Route < ActiveRecord::Base
   belongs_to :final_route
   has_many :route_receivers
   validates_presence_of :customer
+  validates_presence_of :route_date
   scope :filters_from_calendar, lambda { |params| filter_by_date(params) }
   self.per_page = 20
   accepts_nested_attributes_for :route_receivers, allow_destroy: true, reject_if: :all_blank
