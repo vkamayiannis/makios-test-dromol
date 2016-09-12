@@ -1,0 +1,3 @@
+m = $('#modal');
+m.html('<%= j(render partial: 'show_transportation', locals: {task: @task}) %>');
+m.modal('show');

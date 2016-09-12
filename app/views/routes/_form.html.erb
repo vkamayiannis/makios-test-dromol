@@ -1,0 +1,52 @@
+<%= form_for(@route, remote: true) do |f| %>
+  <div class="form-group">
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :customer_name, class: "form-control", placeholder: "Πελάτης" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :loading_time, class: "form-control", placeholder: "Ώρα φόρτωσης" %>
+      </div>
+    </div>
+    <div class="col-xs-2" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :route_desc, class: "form-control", placeholder: "Δρομολόγιο" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :route_date, class: "form-control datepicker", placeholder: "Ημερομηνία" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :transportation_shortcut, class: "form-control", placeholder: "Τράκτορας" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.number_field :quantity, class: "form-control", placeholder: "Ποσότητα" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :sales_value, class: "form-control", placeholder: "Χρέωση" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="field">
+        <%= f.text_field :purchases_value, class: "form-control", placeholder: "Πίστωση" %>
+      </div>
+    </div>
+    <div class="col-xs-1" style="padding: 3px; margin: 23px 0px">
+      <div class="actions">
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+          <span class="glyphicon glyphicon-ok-circle"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<br/>

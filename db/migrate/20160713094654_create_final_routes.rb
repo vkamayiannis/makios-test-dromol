@@ -1,0 +1,15 @@
+class CreateFinalRoutes < ActiveRecord::Migration
+  def change
+    create_table :final_routes do |t|
+      t.date :ftrdate
+      t.integer :trsid
+      t.integer :syromenoid
+      t.integer :supid
+      t.integer :cusid
+      t.integer :routetype
+      t.integer :iswebroute
+
+      t.timestamps null: false
+    end
+  end
+end

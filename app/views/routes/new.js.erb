@@ -1,0 +1,21 @@
+m = $('#modal');
+m.html('<%= j(render partial: 'route_form', locals: {route: @route}) %>');
+$(".autocomplete_txt").autocomplete({
+    source: '/customers',
+    delay: 500
+});
+$("#route_transportation_shortcut").autocomplete({
+  source: '/transportations',
+  delay: 500
+});
+m.modal('show');
+$('#modal').integrateDatepicker();
+
+$(document).on('cocoon:after-insert', function(e, insertedItem) {
+  var x = $('.receivers-name').last();
+  x.autocomplete({
+    source: '/customers',
+    delay: 500
+  });
+  x.focus();
+});

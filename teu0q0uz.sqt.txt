@@ -1,0 +1,13 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	modified:   Gemfile
+#	modified:   Gemfile.lock
+#	modified:   app/assets/javascripts/application.js
+#	modified:   app/controllers/customers_controller.rb
+#	modified:   app/views/routes/_form.html.erb
+#	modified:   app/views/routes/_route.html.erb
+#
+

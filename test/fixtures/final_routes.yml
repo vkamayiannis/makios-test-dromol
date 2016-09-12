@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ftrdate: 2016-07-13
+  trsid: 1
+  syromenoid: 1
+  supid: 1
+  cusid: 1
+  routetype: 1
+  iswebroute: 1
+
+two:
+  ftrdate: 2016-07-13
+  trsid: 1
+  syromenoid: 1
+  supid: 1
+  cusid: 1
+  routetype: 1
+  iswebroute: 1

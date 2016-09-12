@@ -1,0 +1,72 @@
+<%= form_for(@final_route) do |f| %>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title"><span class="fa fa-truck"></span> Οριστικοποίηση δρομολογίων</h3>
+      </div>
+      <div class = "modal-body">
+        <% if @final_route.routes.any? %>
+          <h3>Γραμμές δρομολογίων</h3>
+          <table class="table table-stripped">
+            <th>Δρομολόγιο</th>
+            <th>Ημερομηνία</th>
+            <th>Εντολέας</th>
+            <% @final_route.routes.each do |route| %>
+              <tr>
+              <td class="success"><%= route.route_desc %></td>
+              <td class="success"><%= route.route_date.strftime('%d/%m/%Y') %></td>
+              <td class="success"><%= route.customer_name %></td>
+            <% end %>
+          </table>
+        <% end %>
+        <hr>
+        <br/>
+          <% if @final_route.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@final_route.errors.count, "error") %> prohibited this final_route from being saved:</h2>
+
+              <ul>
+              <% @final_route.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <div class = "form-group">
+              <div class = "row">
+                <div class="field col-xs-2">
+                  <%= f.label :ftrdate, 'Ημερομηνία' %><br>
+                  <%= f.text_field :ftrdate, class: "form-control datepicker" %>
+                </div>
+                <div class="field col-xs-2">
+                  <%= f.label :transportation_shortcut, 'Τράκτορας' %><br>
+                  <%= f.text_field :transportation_shortcut, class: "form-control" %>
+                </div>
+              <div class="field col-xs-2">
+                <%= f.label :syromenoid, 'Συρόμενο' %><br>
+                <%= f.number_field :syromenoid, class: "form-control" %>
+              </div>
+              <div class="field col-xs-3">
+                <%= f.label :supid, 'Προμηθευτής' %><br>
+                <%= f.number_field :supid, class: "form-control" %>
+              </div>
+              <div class="field col-xs-3">
+                <%= f.label :customer_name, 'Εντολέας' %><br>
+                <%= f.text_field :customer_name, class: "form-control" %>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="actions">
+              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+               <i class="icon-ok icon-white glyphicon glyphicon-ok"></i>
+              <% end %>
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+<% end %>
