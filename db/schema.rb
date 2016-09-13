@@ -11,84 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726080101) do
+ActiveRecord::Schema.define(version: 20160719083446) do
 
-  create_table "customers", force: :cascade do |t|
-    t.string   "code"
-    t.string   "name"
-    t.string   "afm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "final_routes", id: false, force: :cascade do |t|
+    t.integer  "id",         limit: nil,                null: false
+    t.datetime "ftrdate"
+    t.integer  "trsid",                  precision: 38
+    t.integer  "syromenoid",             precision: 38
+    t.integer  "supid",                  precision: 38
+    t.integer  "cusid",                  precision: 38
+    t.integer  "routetype",              precision: 38
+    t.integer  "iswebroute",             precision: 38
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "webstatus",              precision: 38
   end
 
-  create_table "final_routes", force: :cascade do |t|
-    t.date     "ftrdate"
-    t.integer  "trsid"
-    t.integer  "syromenoid"
-    t.integer  "supid"
-    t.integer  "cusid"
-    t.integer  "routetype"
-    t.integer  "iswebroute"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "webstatus"
+  create_table "route_receivers", id: false, force: :cascade do |t|
+    t.integer  "id",          limit: nil, null: false
+    t.integer  "route_id",    limit: nil, null: false
+    t.integer  "customer_id", limit: nil, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "models", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "models", ["email"], name: "index_models_on_email", unique: true
-  add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
-
-  create_table "route_receivers", force: :cascade do |t|
-    t.integer  "route_id"
-    t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "route_receivers", ["customer_id"], name: "index_route_receivers_on_customer_id"
-  add_index "route_receivers", ["route_id"], name: "index_route_receivers_on_route_id"
-
-# Could not dump table "routes" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
-  create_table "transportations", force: :cascade do |t|
-    t.integer  "codeid"
-    t.string   "shortcut"
-    t.string   "descr"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "routes", id: false, force: :cascade do |t|
+    t.integer  "id",                limit: nil,                null: false
+    t.integer  "customer_id",       limit: nil
+    t.string   "route_desc"
+    t.datetime "route_date"
+    t.integer  "quantity",                      precision: 38
+    t.float    "sales_value"
+    t.float    "purchases_value"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "transportation_id", limit: nil
+    t.datetime "loading_time"
+    t.integer  "created",                       precision: 38
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                 default: "", null: false
+    t.string   "encrypted_password",                    default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          precision: 38, default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["reset_password_token"], name: "i_users_reset_password_token", unique: true
+
+  add_synonym "customer", "makios.customer", force: true
+  add_synonym "custaddress", "makios.custaddress", force: true
+  add_synonym "transportation", "makios.transportation", force: true
 
 end
