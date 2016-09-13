@@ -16,3 +16,21 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+
+ html body{
+   background-color: #f6ffed;
+ }
+ .jumbotron{
+   background-color: #fff6da;
+ }
+ .navbar{
+   background-color: #edffff;
+ }
+
+ #toTop{
+ 	position: fixed;
+ 	bottom: 10px;
+ 	right: 10px;
+ 	cursor: pointer;
+ 	display: none;
+ }
