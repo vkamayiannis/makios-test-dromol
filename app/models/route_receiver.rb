@@ -1,4 +1,5 @@
 class RouteReceiver < ActiveRecord::Base
+  self.table_name = 'ROUTE_RECEIVERS'
   self.sequence_name = 'ROUTERECEIVERS_SEQ'
   belongs_to :route
   belongs_to :customer

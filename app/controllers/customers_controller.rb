@@ -5,9 +5,9 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     if params[:term]
-      @customers = Customer.order(:name).where('name LIKE ?', "%#{params[:term]}%")
+      @customers = Customer.order(:name).where('isactive = 1 and name LIKE ?', "%#{params[:term]}%")
     else
-      @customers = Customer.all
+      @customers = Customer.where('isactive = 1')
     end
 
    render json: @customers.map(&:name)

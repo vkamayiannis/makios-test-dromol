@@ -5,9 +5,9 @@ class TransportationsController < ApplicationController
   # GET /transportations.json
   def index
     if params[:term]
-      @transportations = Transportation.order(:codeid).where('shortcut LIKE ?', "%#{params[:term]}%")
+      @transportations = Transportation.order(:codeid).where('zisactive = 1 and shortcut LIKE ?', "%#{params[:term]}%")
     else
-      @transportations = Transportation.all
+      @transportations = Transportation.where('zisactive = 1')
     end
     render json: @transportations.map(&:shortcut)
   end

@@ -1,4 +1,5 @@
 class Route < ActiveRecord::Base
+  self.table_name = 'ROUTES'
   self.sequence_name = 'ROUTES_SEQ'
   belongs_to :customer
   belongs_to :transportation
