@@ -1,6 +1,6 @@
 class CreateRoutes < ActiveRecord::Migration
   def change
-    create_table :routes do |t|
+    create_table :zroutes do |t|
       t.references :customer, index: true, foreign_key: true
       t.string :route_desc
       t.date :route_date

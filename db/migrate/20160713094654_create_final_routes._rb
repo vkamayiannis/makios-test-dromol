@@ -1,6 +1,6 @@
 class CreateFinalRoutes < ActiveRecord::Migration
   def change
-    create_table :final_routes do |t|
+    create_table :zfinal_routes do |t|
       t.date :ftrdate
       t.integer :trsid
       t.integer :syromenoid

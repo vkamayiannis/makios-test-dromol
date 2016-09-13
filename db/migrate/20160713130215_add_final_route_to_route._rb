@@ -1,6 +1,6 @@
 class AddFinalRouteToRoute < ActiveRecord::Migration
   def change
-    add_column :routes, :final_route, :reference
+    add_column :zroutes, :zfinal_route, :reference
   end
 
 end
